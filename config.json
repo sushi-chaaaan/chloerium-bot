@@ -1,7 +1,8 @@
 {
     "cogs": [
         "src.core.dispand",
-        "src.core.thread"
+        "src.core.thread",
+        "src.extensions.poll"
     ],
     "log_level": "DEBUG",
     "prefix": "!"

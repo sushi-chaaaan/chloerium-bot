@@ -5,8 +5,8 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from const import literal
 from const.color import EmbedColor
+from const.literal import error
 from db.redis import UnarchiveRedis
 from utils.finder import Finder
 from utils.logger import getMyLogger
@@ -53,9 +53,9 @@ class Thread(commands.Cog):
         try:
             await thread.edit(archived=False)
         except discord.Forbidden as e:
-            self.logger.exception(literal.FORBIDDEN, exc_info=e)
+            self.logger.exception(error.FORBIDDEN, exc_info=e)
         except discord.HTTPException as e:
-            self.logger.exception(literal.FAILED_TO_UNARCHIVE, exc_info=e)
+            self.logger.exception(error.FAILED_TO_UNARCHIVE, exc_info=e)
         return
 
     @group.command(name="on", description="アーカイブ自動解除を有効にする")

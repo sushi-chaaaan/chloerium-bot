@@ -5,7 +5,7 @@ import discord
 from discord import Thread
 from discord.abc import GuildChannel, PrivateChannel
 
-from const import literal
+from const.literal import error
 from utils.logger import getMyLogger
 
 DiscordChannelT = TypeVar("DiscordChannelT", bound=Union[GuildChannel, PrivateChannel, Thread])
@@ -42,7 +42,7 @@ class Finder:
             try:
                 channel = await self.bot.fetch_channel(channel_id)
             except Exception as e:
-                self.logger.exception(literal.CHANNEL_NOT_FOUND, exc_info=e)
+                self.logger.exception(error.CHANNEL_NOT_FOUND, exc_info=e)
                 raise
 
         if not type:
@@ -51,11 +51,11 @@ class Finder:
         if isinstance(type, list):
             for t in type:
                 if not isinstance(channel, t):
-                    self.logger.exception(literal.CHANNEL_NOT_FOUND)
+                    self.logger.exception(error.CHANNEL_NOT_FOUND)
                     raise TypeError(f"Channel is not a {t}")
         else:
             if not isinstance(channel, type):
-                self.logger.exception(literal.CHANNEL_NOT_FOUND)
+                self.logger.exception(error.CHANNEL_NOT_FOUND)
                 raise TypeError(f"Channel is not a {type}")
         return channel
 
@@ -68,7 +68,7 @@ class Finder:
             try:
                 guild = await self.bot.fetch_guild(guild_id)
             except Exception as e:
-                self.logger.exception(literal.CHANNEL_NOT_FOUND, exc_info=e)
+                self.logger.exception(error.CHANNEL_NOT_FOUND, exc_info=e)
                 raise
         return guild
 
@@ -79,7 +79,7 @@ class Finder:
             roles = await guild.fetch_roles()
             role = discord.utils.get(roles, id=role_id)
             if not role:
-                self.logger.exception(literal.CHANNEL_NOT_FOUND)
+                self.logger.exception(error.CHANNEL_NOT_FOUND)
                 raise
         return role
 
@@ -91,7 +91,7 @@ class Finder:
             try:
                 member = await guild.fetch_member(user_id)
             except Exception as e:
-                self.logger.exception(literal.CHANNEL_NOT_FOUND, exc_info=e)
+                self.logger.exception(error.CHANNEL_NOT_FOUND, exc_info=e)
                 member = None
         return member
 
