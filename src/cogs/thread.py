@@ -8,7 +8,7 @@ from discord.ext import commands
 from const import literal
 from const.color import EmbedColor
 from db.redis import UnarchiveRedis
-from utils.finder.finder import Finder
+from utils.finder import Finder
 from utils.logger import getMyLogger
 
 if TYPE_CHECKING:
