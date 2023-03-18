@@ -1,6 +1,7 @@
 {
     "cogs": [
-        "src.cogs.cog"
+        "src.core.dispand",
+        "src.core.thread"
     ],
     "log_level": "DEBUG",
     "prefix": "!"
