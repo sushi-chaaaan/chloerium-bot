@@ -4,8 +4,9 @@ from typing import TYPE_CHECKING
 import discord
 from discord.ext import commands
 
-from const.literal.entrance import join_log, leave_log
+from const import log
 from utils.finder import Finder
+from utils.logger import getMyLogger
 from utils.time import TimeUtils
 
 if TYPE_CHECKING:
@@ -18,10 +19,11 @@ if TYPE_CHECKING:
 class Entrance(commands.Cog):
     def __init__(self, bot: "Bot"):
         self.bot = bot
+        self.logger = getMyLogger(__name__)
 
     @commands.Cog.listener(name="on_member_join")
     async def on_join(self, member: discord.Member):
-        msg = join_log(
+        msg = log.on_member_join(
             joined=TimeUtils.dt_to_str(),
             name=member.name,
             id=member.id,
@@ -29,7 +31,7 @@ class Entrance(commands.Cog):
             created=TimeUtils.dt_to_str(member.created_at),
             count=member.guild.member_count or -1,
         )
-        self.bot.logger.debug(msg)
+        self.logger.debug(msg)
 
         finder = Finder(self.bot)
         channel = await finder.find_channel(int(os.environ["ENTRANCE_CHANNEL_ID"]), type=discord.TextChannel)
@@ -41,7 +43,7 @@ class Entrance(commands.Cog):
         finder = Finder(self.bot)
         guild = await finder.find_guild(payload.guild_id)
 
-        msg = leave_log(
+        msg = log.on_member_leave(
             left=TimeUtils.dt_to_str(),
             name=payload.user.name,
             id=payload.user.id,
@@ -49,7 +51,7 @@ class Entrance(commands.Cog):
             created=TimeUtils.dt_to_str(payload.user.created_at),
             count=guild.member_count or -1,
         )
-        self.bot.logger.info(msg)
+        self.logger.debug(msg)
 
         channel = await finder.find_channel(int(os.environ["ENTRANCE_CHANNEL_ID"]), type=discord.TextChannel)
         await channel.send(msg)

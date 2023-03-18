@@ -5,8 +5,8 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
+from const import error
 from const.color import EmbedColor
-from const.literal import error
 from db.redis import UnarchiveRedis
 from utils.finder import Finder
 from utils.logger import getMyLogger

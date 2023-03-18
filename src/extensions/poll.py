@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 from const.color import EmbedColor
-from const.literal.error import POLL_TOO_MANY_OPTIONS
+from const.error import POLL_TOO_MANY_OPTIONS
 from utils.io import read_json
 
 if TYPE_CHECKING:
