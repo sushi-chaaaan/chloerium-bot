@@ -5,7 +5,7 @@ import discord
 from discord import Thread
 from discord.abc import GuildChannel, PrivateChannel
 
-from utils.finder import literal
+from const import literal
 from utils.logger import getMyLogger
 
 DiscordChannelT = TypeVar("DiscordChannelT", bound=Union[GuildChannel, PrivateChannel, Thread])
