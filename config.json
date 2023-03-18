@@ -1,6 +1,7 @@
 {
     "cogs": [
         "src.core.dispand",
+        "src.core.entrance",
         "src.core.thread",
         "src.extensions.poll"
     ],
