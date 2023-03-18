@@ -1,10 +1,9 @@
-import os
 from typing import TYPE_CHECKING
 
 import discord
 from discord.ext import commands
 
-from const import log
+from const import channel_id, log
 from utils.finder import Finder
 from utils.logger import getMyLogger
 from utils.time import TimeUtils
@@ -34,7 +33,7 @@ class Entrance(commands.Cog):
         self.logger.debug(msg)
 
         finder = Finder(self.bot)
-        channel = await finder.find_channel(int(os.environ["ENTRANCE_CHANNEL_ID"]), type=discord.TextChannel)
+        channel = await finder.find_channel(channel_id.ENTRANCE_CHANNEL_ID, type=discord.TextChannel)
         await channel.send(msg)
         return
 
@@ -53,7 +52,7 @@ class Entrance(commands.Cog):
         )
         self.logger.debug(msg)
 
-        channel = await finder.find_channel(int(os.environ["ENTRANCE_CHANNEL_ID"]), type=discord.TextChannel)
+        channel = await finder.find_channel(channel_id.ENTRANCE_CHANNEL_ID, type=discord.TextChannel)
         await channel.send(msg)
         return
 

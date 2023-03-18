@@ -1,11 +1,10 @@
-import os
 from typing import TYPE_CHECKING
 
 import discord
 from discord import app_commands
 from discord.ext import commands
 
-from const import error
+from const import error, general
 from const.color import EmbedColor
 from db.redis import UnarchiveRedis
 from utils.finder import Finder
@@ -26,7 +25,7 @@ class Thread(commands.Cog):
     group = app_commands.Group(
         name="unarchive",
         description="アーカイブ自動解除機能",
-        guild_ids=[int(os.environ["GUILD_ID"])],
+        guild_ids=[general.GUILD_ID],
     )
 
     @commands.Cog.listener("on_raw_thread_update")
