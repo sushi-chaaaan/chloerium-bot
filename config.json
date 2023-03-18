@@ -2,8 +2,10 @@
     "cogs": [
         "src.core.dispand",
         "src.core.entrance",
+        "src.core.error_handler",
         "src.core.thread",
-        "src.extensions.poll"
+        "src.extensions.poll",
+        "src,extensions.ticket"
     ],
     "log_level": "DEBUG",
     "prefix": "!"
