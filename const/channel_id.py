@@ -1,4 +1,5 @@
 import os
 
+DM_TRANSFER_CHANNEL_ID = int(os.environ["DM_TRANSFER_CHANNEL_ID"])
 ENTRANCE_CHANNEL_ID = int(os.environ["ENTRANCE_CHANNEL_ID"])
 TICKET_CHANNEL_ID = int(os.environ["TICKET_CHANNEL_ID"])
