@@ -44,11 +44,14 @@ class CreateTicketButton(ui.Button):  # type: ignore
             type=discord.ChannelType.private_thread,
             invitable=False,
         )
+        await interaction.followup.send(f"スレッドを作成しました。\n以降のやり取りはこちらでお願いします。\n{thread.mention}")
         await thread.send(
             f"""
+{interaction.user.mention} さん
 お問い合わせありがとうございます。
 このスレッドでは運営メンバーと直接話し合うことができます。
 お困りのことについて教えてください。
+
 {mod_mention}
 """
         )
