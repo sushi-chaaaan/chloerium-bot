@@ -500,7 +500,7 @@ files = [
 
 [[package]]
 name = "discord.py"
-version = "2.3.0a4789+g064cbd11"
+version = "2.3.0a4816+g34a434b2"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
@@ -530,7 +530,7 @@ resolved_reference = "34a434b2afb605fb3cb7884608394c258b6ef962"
 [[package]]
 name = "dispander"
 version = "0.5.0"
-description = ""
+description = "Discord Message URL Expander"
 category = "main"
 optional = false
 python-versions = "*"
