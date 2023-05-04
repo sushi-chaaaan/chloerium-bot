@@ -1,6 +1,11 @@
 {
     "cogs": [
-        "src.cogs.cog"
+        "src.core.error_handler",
+        "src.extensions.dispand",
+        "src.extensions.entrance",
+        "src.extensions.thread",
+        "src.extensions.poll",
+        "src.extensions.ticket.ticket"
     ],
     "log_level": "DEBUG",
     "prefix": "!"

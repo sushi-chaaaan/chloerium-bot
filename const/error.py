@@ -6,3 +6,6 @@ FAILED_TO_UNPIN = "ピン留めの解除に失敗しました。"
 FAILED_TO_SEND_DM = "DMの送信に失敗しました。\n送信対象がDMが受信できない設定に\nしている可能性があります。"
 FORBIDDEN = "必要な権限がBotに与えられていません。"
 UNKNOWN_ERROR = "不明なエラーが発生しました。"
+
+
+POLL_TOO_MANY_OPTIONS = """選択肢は最大20個までです。"""
