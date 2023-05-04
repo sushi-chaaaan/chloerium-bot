@@ -24,18 +24,31 @@ class Dispander(commands.Cog):
             return
 
         try:
-            embeds: list[discord.Embed] = await dispand(message)
+            extracted = await dispand(message)
         except Exception as e:
             self.logger.error(e)
-            embeds = []
+            extracted = []
 
-        if embeds is None or embeds == []:
+        if extracted is None or extracted == []:
             return
 
-        try:
-            await message.channel.send(embeds=embeds, silent=message.flags.silent)
-        except Exception as e:
-            self.logger.error(e)
+        for fragment in extracted:
+            view = discord.ui.View(timeout=None)
+            view.add_item(
+                discord.ui.Button(
+                    label="元のメッセージ",
+                    style=discord.ButtonStyle.url,
+                    url=fragment["jump_url"],
+                )
+            )
+
+            try:
+                await message.channel.send(
+                    embeds=fragment["embeds"][:10],
+                    view=view,
+                )
+            except Exception as e:
+                self.logger.error(e, stack_info=True)
         return
 
 
